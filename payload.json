@@ -1,0 +1,7 @@
+{
+  "prompt": "Write a short poem about Docker containers.",
+  "quantization": true,
+  "streaming": true,
+  "max_tokens": 150,
+  "temperature": 0.7
+}
