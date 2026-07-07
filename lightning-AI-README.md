@@ -102,11 +102,11 @@ Create the models folder and download your weights (replace URLs with your actua
 mkdir -p models
 
 # Download GGUF
-wget -O models/qwen2.5.gguf "https://huggingface.co/YOUR_REPO/resolve/main/qwen2.5.gguf"
+wget -O models/qwen2.5.gguf "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/blob/main/qwen2.5-0.5b-instruct-q4_k_m.gguf"
 
 # Download Safetensors
 pip install huggingface_hub
-huggingface-cli download YOUR_REPO/qwen2.5-safetensors --local-dir models/qwen2.5-safetensors
+huggingface-cli download "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/blob/main/model.safetensors"
 ```
 
 ### 3. Start the API Server
