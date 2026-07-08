@@ -4,4 +4,3 @@ pydantic
 transformers
 accelerate
 pynvml
-llama-cpp-python
