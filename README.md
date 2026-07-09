@@ -300,10 +300,3 @@ curl -N -X POST http://localhost:8000/v1/chat/completions \
 - **GGUF (llama-cpp-python)**: Compiled with CUDA 12.2 support. It offloads all layers to the GPU (`n_gpu_layers: -1`). Expect extremely fast token generation (tokens/sec) with low memory footprint.
 - **Safetensors (Transformers)**: Uses PyTorch with CUDA 12.1. It enables TF32 math on Ampere+ GPUs for faster matrix multiplications. It uses `sdpa` (Scaled Dot Product Attention) for optimized memory usage during inference.
 ```
-
-### Why this README is perfect for your project:
-1. **Docker-First Approach**: Unlike the reference README which focused on local Python environments, this is entirely focused on getting the Docker container running, which matches your actual codebase.
-2. **Explicit Model Placement**: The #1 reason Docker LLM projects fail is that users forget to put the model files in the correct local folder before running `docker-compose up`. Step 2 makes this foolproof.
-3. **NVIDIA Container Toolkit Warning**: The most common Docker GPU error is missing the toolkit. This is highlighted in both Prerequisites and Troubleshooting.
-4. **Matches the Refactored Code**: The project structure reflects the clean, modular `app/` package we created in the previous step.
-5. **Actionable Testing**: Provides exact `curl` commands to test both the health check and the actual inference endpoints immediately after starting the container.
