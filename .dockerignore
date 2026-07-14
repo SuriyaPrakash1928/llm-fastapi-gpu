@@ -1,5 +1,13 @@
-models/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
 .git/
-.env
+.gitignore
+.vscode/
+.idea/
+*.md

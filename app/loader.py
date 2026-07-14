@@ -4,8 +4,8 @@ from llama_cpp import Llama
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from .config import GGUF_MODEL_PATH, SAFETENSORS_MODEL_PATH
-from .hardware import detect_nvidia_gpus, detect_intel_gpus, analyze_and_calculate_split
+from app.config import GGUF_MODEL_PATH, SAFETENSORS_MODEL_PATH
+from app.hardware import detect_nvidia_gpus, detect_intel_gpus, analyze_and_calculate_split
 
 class ModelManager:
     """Encapsulates the state and loading logic for both LLM models."""
@@ -24,15 +24,19 @@ class ModelManager:
             print("\nLoading GGUF model...")
             llama_kwargs = {
                 "model_path": GGUF_MODEL_PATH,
-                "n_gpu_layers": -1,  # Strictly run on GPU
-                "n_ctx": 2048,       # Optimized context window
-                "verbose": False     # Shows GPU offloading logs
+                "n_gpu_layers": -1,          # Offload all layers to the single GPU
+                "n_ctx": 2048,               
+                "verbose": False,             
+                "use_mmap": False,           
+                "use_mlock": False           
             }
-            if tensor_split_ratio is not None:
-                llama_kwargs["tensor_split"] = tensor_split_ratio
-                
-            if 'split_mode' in inspect.signature(Llama).parameters:
-                llama_kwargs["split_mode"] = 2 
+            
+            # ❌ REMOVE OR COMMENT OUT THESE LINES:
+            # if tensor_split_ratio is not None:
+            #     llama_kwargs["tensor_split"] = tensor_split_ratio
+            #     
+            # if 'split_mode' in inspect.signature(Llama).parameters:
+            #     llama_kwargs["split_mode"] = 2 
                 
             self.llm_gguf = Llama(**llama_kwargs)
             print("[SUCCESS] GGUF model loaded.")

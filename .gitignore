@@ -1,2 +1,31 @@
-models
-./models
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Models (CRITICAL - GitHub has 100MB limit!)
+models/*.gguf
+models/*.bin
+models/*.safetensors
+models/*-safetensors/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Environment variables
+.env
+*.env

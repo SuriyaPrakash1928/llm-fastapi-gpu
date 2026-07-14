@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import StreamingResponse
 import uvicorn
 
-from .schemas import ChatRequest
-from .loader import ModelManager
-from .generator import (
+from app.schemas import ChatRequest
+from app.loader import ModelManager
+from app.generator import (
     generate_gguf_stream, generate_gguf_sync,
     generate_safetensors_stream, generate_safetensors_sync
 )
